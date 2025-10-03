@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS job_report (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  project_id INTEGER NOT NULL UNIQUE,
+  generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  generated_by TEXT,
+  notes TEXT,
+  asset_id INTEGER,
+  FOREIGN KEY (project_id) REFERENCES project(id) ON DELETE CASCADE,
+  FOREIGN KEY (asset_id) REFERENCES asset(id) ON DELETE SET NULL
+);
